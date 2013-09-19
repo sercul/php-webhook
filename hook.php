@@ -13,6 +13,16 @@ if (file_exists('key.php'))
         _exec('pwd');
         _exec('git pull');
         _exec('git submodule update');
+        
+        _exec('php yiic migrate --interactive=0');
+        _exec('chmod -R 0777 assets');
+        $all_files = glob('path/to/assets/*');
+        foreach($all_files as $one_file){ 
+          if(is_file($one_file))
+            unlink($one_file); 
+        }
+        
+
     }
 }
 
